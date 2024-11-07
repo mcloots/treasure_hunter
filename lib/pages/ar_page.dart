@@ -1,8 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_unity_widget/flutter_unity_widget.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:treasure_hunter/models/location_model.dart';
 
 class ArPage extends StatefulWidget {
-  const ArPage({super.key});
+  final Location location;
+
+  const ArPage({super.key, required this.location});
 
   @override
   State<ArPage> createState() => _ArPageState();
@@ -10,11 +16,27 @@ class ArPage extends StatefulWidget {
 
 class _ArPageState extends State<ArPage> {
   UnityWidgetController? _unityWidgetController;
-  bool isMuted = false;
+  bool _isCameraPermissionGranted = false;
 
   @override
   void initState() {
     super.initState();
+    _checkCameraPermission();
+  }
+
+  // Check for camera permission
+  Future<void> _checkCameraPermission() async {
+    final status = await Permission.camera.request();
+
+    if (status.isGranted) {
+      setState(() {
+        _isCameraPermissionGranted = true;
+      });
+    } else {
+      setState(() {
+        _isCameraPermissionGranted = false;
+      });
+    }
   }
 
   @override
@@ -25,6 +47,11 @@ class _ArPageState extends State<ArPage> {
 
   @override
   Widget build(BuildContext context) {
+    if (!_isCameraPermissionGranted) {
+      return const Center(
+          child: Text('Camera permission is required to proceed.'));
+    }
+
     return UnityWidget(
       onUnityCreated: _onUnityCreated,
       onUnityMessage: onUnityMessage,
@@ -35,22 +62,11 @@ class _ArPageState extends State<ArPage> {
   }
 
   // Communication from Flutter to Unity
-  void toggleMute() {
-    var play = 'On';
-
-    setState(() {
-      if (isMuted) {
-        play = 'On';
-      } else {
-        play = 'Off';
-      }
-      isMuted = !isMuted;
-    });
-
+  void _sendLocation() {
     _unityWidgetController?.postMessage(
-      'BackgroundSound',
-      'ToggleSound',
-      play,
+      'TargetLocation',
+      'SetTargetLocation',
+      jsonEncode(widget.location.toJson()),
     );
   }
 
@@ -71,5 +87,6 @@ class _ArPageState extends State<ArPage> {
   void _onUnityCreated(controller) {
     controller.resume();
     _unityWidgetController = controller;
+    _sendLocation();
   }
 }

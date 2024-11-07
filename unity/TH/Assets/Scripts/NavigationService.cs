@@ -38,7 +38,7 @@ public class NavigationService : MonoBehaviour
                     + "\nLong (p): " + playerLocation.longitude
                     + "\nLat (t): " + targetLocation.latitude
                     + "\nLong (t): " + targetLocation.longitude
-                    + "\nStartrichting: " + playerLocation.startDirection
+                    + "\nName target: " + targetLocation.targetName
                     + "\nM: " + Math.Round(distance, 3);
 
                 if (distance > 10)

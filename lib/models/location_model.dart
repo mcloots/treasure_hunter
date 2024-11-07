@@ -25,4 +25,13 @@ class Location {
       distance: 0
     );
   }
+
+  Map<String, dynamic> toJson() =>
+    {
+      'id': id,
+      'name': name,
+      'modelname': modelName,
+      'longitude': longitude,
+      'latitude': latitude,
+    };
 }

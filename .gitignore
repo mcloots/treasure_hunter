@@ -41,3 +41,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+/android/unityLibrary
+unity/TH/Assets/Editor/Migration/com.ptc.vuforia.engine-10.27.3.tgz
+unity/TH/Assets/Editor/Migration/com.ptc.vuforia.engine-10.27.3.tgz.meta

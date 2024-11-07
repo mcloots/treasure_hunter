@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:treasure_hunter/models/location_model.dart';
+import 'package:treasure_hunter/pages/ar_page.dart';
 
 import '../apis/locations_api.dart';
 
@@ -91,7 +92,13 @@ class _LocationsPageState extends State<LocationsPage> {
             title: Text(locationList[position].name),
             subtitle: Text("${locationList[position].distance.toStringAsFixed(2)} km"),
             onTap: () {
-              debugPrint("Tapped on ${locationList[position].id}");
+              // Navigate to ARPage and pass the location
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ArPage(location: locationList[position]),
+                ),
+              );
             },
           ),
         );
