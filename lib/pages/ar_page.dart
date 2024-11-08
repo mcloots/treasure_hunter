@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_unity_widget/flutter_unity_widget.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:treasure_hunter/globals.dart';
 import 'package:treasure_hunter/models/location_model.dart';
 
 class ArPage extends StatefulWidget {
@@ -70,8 +71,17 @@ class _ArPageState extends State<ArPage> {
     );
   }
 
+  // Communication from Flutter to Unity
+  void _sendUsername() {
+    _unityWidgetController?.postMessage(
+      'CurrentUser',
+      'SetUsername',
+      globalUsername!,
+    );
+  }
+
   void onUnityMessage(message) {
-    print('Received message from unity: ${message.toString()}');
+    print('RECEIVED MESSAGE FROM UNITY: ${message.toString()}');
   }
 
   void onUnitySceneLoaded(SceneLoaded? scene) {
@@ -88,5 +98,6 @@ class _ArPageState extends State<ArPage> {
     controller.resume();
     _unityWidgetController = controller;
     _sendLocation();
+    _sendUsername();
   }
 }

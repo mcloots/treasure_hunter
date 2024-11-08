@@ -32,6 +32,7 @@ public class TargetLocation : MonoBehaviour
     public float longitude;
 
     public string targetName;
+    public int locationId;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +64,7 @@ public class TargetLocation : MonoBehaviour
         // Decode the JSON string into a Location object
         Location location = JsonConvert.DeserializeObject<Location>(targetLocationJsonString);
 
+        locationId = location.id;
         latitude = location.latitude;
         longitude = location.longitude;
         targetName = location.name;
