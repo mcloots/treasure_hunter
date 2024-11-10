@@ -26,7 +26,7 @@ public class CheckinHandler : MonoBehaviour
         CurrentUser currentUser = FindObjectOfType<CurrentUser>();
 
         // Create an instance of PostData with the required values
-        PostData postData = new PostData(targetLocation.locationId, currentUser.username);
+        PostData postData = new PostData(targetLocation.location.id, currentUser.username);
 
         // Convert the object to JSON
         string jsonData = JsonUtility.ToJson(postData);

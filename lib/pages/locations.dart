@@ -90,7 +90,7 @@ class _LocationsPageState extends State<LocationsPage> {
               child: Text(locationList[position].name.substring(0, 1)),
             ),
             title: Text(locationList[position].name),
-            subtitle: Text("${locationList[position].distance.toStringAsFixed(2)} km"),
+            subtitle: Text("${locationList[position].distance.toStringAsFixed(2)} km (${locationList[position].texture})"),
             onTap: () {
               // Navigate to ARPage and pass the location
               Navigator.push(

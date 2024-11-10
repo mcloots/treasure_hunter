@@ -257,7 +257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c35dd2d4299d25247826ccffcd4762c8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c35dd2d4299d25247826ccffcd4762c8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -293,7 +293,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4f4ad40171635c64b9ba05a8c4437f5b, type: 2}
     - target: {fileID: 919132149155446097, guid: c35dd2d4299d25247826ccffcd4762c8, type: 3}
       propertyPath: m_Name
-      value: enemy
+      value: UFOModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238582819577645417, guid: c35dd2d4299d25247826ccffcd4762c8, type: 3}
+      propertyPath: m_Name
+      value: UFO
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -302,6 +306,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c35dd2d4299d25247826ccffcd4762c8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 46977984}
+    - targetCorrespondingSourceObject: {fileID: 2238582819577645417, guid: c35dd2d4299d25247826ccffcd4762c8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1030547708}
   m_SourcePrefab: {fileID: 100100000, guid: c35dd2d4299d25247826ccffcd4762c8, type: 3}
 --- !u!1 &46977983 stripped
 GameObject:
@@ -565,15 +572,15 @@ RectTransform:
   m_GameObject: {fileID: 707589669}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 988930854}
   m_Father: {fileID: 25033782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: -300}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -150, y: -100}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &707589671
@@ -633,7 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21568629, g: 0.78823537, b: 0.7607844, a: 1}
+  m_Color: {r: 0.754717, g: 0.29547882, b: 0.30496007, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -729,18 +736,34 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d956c4017a2b93d4aab9e5158be1f30f, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a107b6123c5d9c45a66c5a8d140bddf, type: 3}
       propertyPath: m_Name
-      value: 3D RightArrow
+      value: ArrowModel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a107b6123c5d9c45a66c5a8d140bddf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 829067007}
   m_SourcePrefab: {fileID: 100100000, guid: 7a107b6123c5d9c45a66c5a8d140bddf, type: 3}
 --- !u!4 &829067004 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a107b6123c5d9c45a66c5a8d140bddf, type: 3}
   m_PrefabInstance: {fileID: 829067003}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &829067007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782628375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8f26107fddae4428279d189049d879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorName: 
 --- !u!1 &884704575
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,7 +827,7 @@ GameObject:
   - component: {fileID: 988930856}
   - component: {fileID: 988930855}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: CheckingButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -851,7 +874,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -871,6 +894,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988930853}
   m_CullTransparentMesh: 1
+--- !u!1 &1030547704 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2238582819577645417, guid: c35dd2d4299d25247826ccffcd4762c8, type: 3}
+  m_PrefabInstance: {fileID: 46977982}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1030547708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030547704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8f26107fddae4428279d189049d879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorName: 
 --- !u!1 &1189083549
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,10 +941,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac5adbb8f970f2742898c007209b1f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  latitude: 0
-  longitude: 0
-  targetName: 
-  locationId: 0
+  location:
+    id: 0
+    name: 
+    texture: 
+    latitude: 0
+    longitude: 0
+  arrowObject: {fileID: 782628375}
 --- !u!4 &1189083551
 Transform:
   m_ObjectHideFlags: 0
@@ -1210,7 +1254,7 @@ GameObject:
   - component: {fileID: 2034801938}
   - component: {fileID: 2034801937}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: TargetLocationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1309,6 +1353,7 @@ MonoBehaviour:
   myText: {fileID: 2034801937}
   arrow: {fileID: 782628375}
   ufo: {fileID: 46977983}
+  checkinButton: {fileID: 707589669}
 --- !u!4 &2078532796
 Transform:
   m_ObjectHideFlags: 0

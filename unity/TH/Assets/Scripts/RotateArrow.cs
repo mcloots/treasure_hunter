@@ -23,7 +23,7 @@ public class RotateArrow : MonoBehaviour
         // Ensure the player's location data is available
         if (targetLocation != null && playerLocation != null && Input.location.status == LocationServiceStatus.Running)
         {
-            Vector3 rotation = GetRotationDirection(playerLocation.latitude, playerLocation.longitude, targetLocation.latitude, targetLocation.longitude);
+            Vector3 rotation = GetRotationDirection(playerLocation.latitude, playerLocation.longitude, targetLocation.location.latitude, targetLocation.location.longitude);
             arrow.rotation = Quaternion.Euler(rotation);
         }
     }

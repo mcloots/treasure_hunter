@@ -1,7 +1,7 @@
 class Location {
   final int id;
   final String name;
-  final String modelName;
+  final String texture;
   final double latitude;
   final double longitude;
   double distance;
@@ -9,7 +9,7 @@ class Location {
   Location({
     required this.id,
     required this.name,
-    required this.modelName,
+    required this.texture,
     required this.latitude,
     required this.longitude,
     required this.distance
@@ -19,7 +19,7 @@ class Location {
     return Location(
       id: json['id'],
       name: json['name'],
-      modelName: json['modelname'],
+      texture: json['texture'],
       latitude: json['latitude'],
       longitude: json['longitude'],
       distance: 0
@@ -30,7 +30,7 @@ class Location {
     {
       'id': id,
       'name': name,
-      'modelname': modelName,
+      'texture': texture,
       'longitude': longitude,
       'latitude': latitude,
     };

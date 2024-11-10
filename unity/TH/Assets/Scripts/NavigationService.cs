@@ -11,6 +11,7 @@ public class NavigationService : MonoBehaviour
     public Text myText;
     public GameObject arrow;
     public GameObject ufo;
+    public GameObject checkinButton;
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +21,9 @@ public class NavigationService : MonoBehaviour
 
         targetLocation = FindObjectOfType<TargetLocation>();
 
+        ufo.SetActive(false);
         arrow.SetActive(false);
-        arrow.SetActive(false);
+        checkinButton.SetActive(false);
     }
 
     // Update is called once per frame
@@ -30,27 +32,29 @@ public class NavigationService : MonoBehaviour
         if (targetLocation != null && playerLocation != null && myText != null)
         {
             var distance = Distance(playerLocation.latitude, playerLocation.longitude,
-    targetLocation.latitude, targetLocation.longitude);
+    targetLocation.location.latitude, targetLocation.location.longitude);
 
             if (playerLocation.isStartUpFinished)
             {
                 myText.text = "Lat (p): " + playerLocation.latitude
                     + "\nLong (p): " + playerLocation.longitude
-                    + "\nLat (t): " + targetLocation.latitude
-                    + "\nLong (t): " + targetLocation.longitude
-                    + "\nName target: " + targetLocation.targetName
+                    + "\nLat (t): " + targetLocation.location.latitude
+                    + "\nLong (t): " + targetLocation.location.longitude
+                    + "\nName target: " + targetLocation.location.name
                     + "\nM: " + Math.Round(distance, 3);
 
                 if (distance > 10)
                 {
                     arrow.SetActive(true);
                     ufo.SetActive(false);
+                    checkinButton.SetActive(false);
                 }
                 else
                 {
                     arrow.SetActive(false);
                     RepositionUFOtoCurrentPosition();
                     ufo.SetActive(true);
+                    checkinButton.SetActive(true);
                 }
             }
             else
